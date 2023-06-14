@@ -1,6 +1,6 @@
 - name: check latest docker version
   set_fact:
-    docker_compose_latest_version: "{{ lookup('url', 'https://github.com/docker/compose/releases/latest') | regex_findall('download/([0-9]+[.][0-9]+[.][0-9]+)') | first }}"
+    docker_compose_latest_version: "{{ lookup('url', 'https://github.com/docker/compose/releases/latest') | regex_findall('tag/(v[0-9]+[.][0-9]+[.][0-9]+)') | first }}"
   when: docker_compose_version == 'latest'
   changed_when: false
 - name: check installed docker compose version
